@@ -7,15 +7,17 @@ import PackageDescription
     let packageSettings = PackageSettings(
         // Customize the product types for specific package product
         // Default is .staticFramework
-        // productTypes: ["Alamofire": .framework,] 
-        productTypes: [:]
+        productTypes: ["Alamofire": .framework] 
     )
 #endif
 
 let package = Package(
     name: "TuistPracticeOne",
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", exact: "5.9.1")
-        // You can read more about dependencies here: https://docs.tuist.io/documentation/tuist/dependencies
+        .package(url: "https://github.com/Alamofire/Alamofire.git", exact: "5.9.1"),
+        .package(url: "https://github.com/devxoul/Then", exact: "3.0.0"),
+        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
+        .package(url: "https://github.com/CombineCommunity/CombineExt.git", exact: "1.8.1"),
+        .package(url: "https://github.com/CombineCommunity/CombineCocoa.git", exact: "0.4.1")
     ]
 )

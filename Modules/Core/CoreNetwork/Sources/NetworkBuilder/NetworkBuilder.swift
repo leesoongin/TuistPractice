@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import CoreFoundationKit
 import Alamofire
 
 public typealias HTTPHeaderType = [String: String]
@@ -63,8 +62,7 @@ public extension NetworkBuilder {
 
 extension NetworkBuilder {
     func createURL() -> URL? {
-//        (baseURL + path).toURL
-        nil
+        (baseURL + path).toURL
     }
 
     func createDefaultHeader() -> HTTPHeaders {
@@ -85,13 +83,9 @@ extension NetworkBuilder {
 extension NetworkBuilder {
     func defaultResponse(debug: Bool, response: HTTPURLResponse, data: Data) throws -> ResponseType {
         if debug {
-//            Log.debug("Network -> response : \(response)")
-//            Log.debug("Network -> \(String(decoding: data, as: UTF8.self))")
+            print("Network -> response : \(response)")
+            print("Network -> \(String(decoding: data, as: UTF8.self))")
         }
-        //        guard (200 ..< 300) ~= response.statusCode else {
-        //            throw CommonNetworkError.invalidStatus(code: response.statusCode)
-        //        }
-
         do {
             return try defaultDecode(from: data)
         } catch {
@@ -101,6 +95,20 @@ extension NetworkBuilder {
 
     func defaultDecode(from data: Data) throws -> ResponseType {
         try decode(from: data)
+    }
+}
+
+extension String {
+    public var toURL: URL? {
+        if !isEscaped(), let encoded = addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            return URL(string: encoded)
+        } else {
+            return URL(string: self)
+        }
+    }
+    
+    private func isEscaped() -> Bool {
+        removingPercentEncoding != self
     }
 }
 

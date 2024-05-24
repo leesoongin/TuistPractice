@@ -21,7 +21,7 @@ extension Project {
         let frameworkTarget = Target.target(name: module.name,
                                             destinations: destinations,
                                             product: hasDynamicFramework ? .framework : .staticFramework,
-                                            bundleId: bundleIdentifier,
+                                            bundleId: "\(bundleIdentifier).\(module.name)",
                                             deploymentTargets: .iOS(deploymentTargetVersion),
                                             sources: ["\(module.path)/Sources/**"],
                                             resources: .resources([]),

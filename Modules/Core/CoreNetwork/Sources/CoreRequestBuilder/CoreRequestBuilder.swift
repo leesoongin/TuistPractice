@@ -60,9 +60,9 @@ extension CoreRequestBuilder {
             }
 
             if debug {
-//                Log.debug("Network -> URL(\(self.method.rawValue)) : \(String(describing: dataRequest.convertible.urlRequest?.url))")
-//                Log.debug("Network -> request header : \(String(describing: self.createDefaultHeader()))")
-//                Log.debug("Network -> parameters : \(String(describing: self.parameters))")
+                print("Network -> URL(\(self.method.rawValue)) : \(String(describing: dataRequest.convertible.urlRequest?.url))")
+                print("Network -> request header : \(String(describing: self.createDefaultHeader()))")
+                print("Network -> parameters : \(String(describing: self.parameters))")
             }
 
             dataRequest.responseData { dataResponse in

@@ -21,7 +21,16 @@ extension Project {
                                        infoPlist: makeAppInfoPlist(),
                                        sources: ["TuistPracticeOne/Sources/**"],
                                        resources: ["TuistPracticeOne/Resources/**"],
-                                       dependencies: [.external(name: "Alamofire")])
+                                       dependencies: [
+                                        .external(name: "Alamofire"),
+                                        .external(name: "Then"),
+                                        .external(name: "SnapKit"),
+                                        .external(name: "CombineExt"),
+                                        .external(name: "CombineCocoa"),
+                                        .target(name: "CoreNetwork"),
+                                        .target(name: "NetworkProvider"),
+                                        .target(name: "ThirdPartyLibrary")
+                                       ])
         
         return [mainTarget]
     }
