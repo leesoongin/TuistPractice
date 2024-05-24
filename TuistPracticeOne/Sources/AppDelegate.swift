@@ -6,12 +6,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let viewController = TestViewController()
-        viewController.title = "TuistPractiveOne"
+        let viewController = MainViewController()
+        viewController.title = "TuistPracticeOne"
+        viewController.view.backgroundColor = .green
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.rootViewController = UINavigationController(rootViewController: viewController)
         self.window?.makeKeyAndVisible()
 
         return true
+    }
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        setupModuleAdapter()
+        return true
+    }
+    
+    private func setupModuleAdapter() {
+        ModuleAdapter.setup()
     }
 }
